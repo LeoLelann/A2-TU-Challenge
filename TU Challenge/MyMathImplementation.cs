@@ -12,7 +12,7 @@ namespace TU_Challenge
 
         public static int Power2(int a)
         {
-            return a*a;
+            return a * a;
         }
 
         public static int Add(int a, int b)
@@ -34,7 +34,7 @@ namespace TU_Challenge
 
         public static bool IsEven(int a)
         {
-            throw new NotImplementedException();
+            return a % 2 == 0;
         }
 
         public static bool IsDivisible(int a, int b)
@@ -52,7 +52,7 @@ namespace TU_Challenge
             {
                 return true;
             }
-            if(a%a ==0 && a%2 == 0)
+            if (a % a == 0 && a % 2 == 0)
             {
                 return false;
             }
@@ -61,14 +61,20 @@ namespace TU_Challenge
 
         public static List<int> GetAllPrimary(int a)
         {
-            throw new NotImplementedException();
+            List<int> primeNumbersList = new List<int>();
+            for (int i = 1; i <= a; i++)
+            {
+                if (IsPrimary(i))
+                    primeNumbersList.Add(i);
+            }
+            return primeNumbersList;
         }
 
         public static int Power(int a, int b)
         {
             int c = a;
             for (int i = 1; i < b; i++)
-            { 
+            {
                 a *= c;
             }
             return a;
@@ -90,17 +96,35 @@ namespace TU_Challenge
             }
             throw new NotImplementedException();
         }
-
         public static bool IsListInOrder(List<int> list)
         {
-            throw new NotImplementedException();
+            if (list.Count == 1) return true;
+            else for (int i = 1; i < list.Count; i++)
+                {
+                    if (IsInOrder(list[i - 1], list[i]) == -1) return false;
+                }
+            return true;
         }
+
+
 
         public static object Sort(List<int> toSort)
         {
-            throw new NotImplementedException();
+            List<int> sortedList = new List<int>();
+            int listExpectedCount = toSort.Count;
+            int currentLowest;
+            while (sortedList.Count != listExpectedCount)
+            {
+                currentLowest = toSort[0];
+                for (int i = 1; i < toSort.Count; i++)
+                {
+                    if (currentLowest > toSort[i]) ;
+                    currentLowest = toSort[1];
+                }
+                sortedList.Add(currentLowest);
+            }
+            return sortedList;
         }
-
         public static object GenericSort(List<int> toSort, Func<int, int, int> isInOrder)
         {
             throw new NotImplementedException();
